@@ -1,0 +1,214 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Calibri, sans-serif;
+    background: url('https://img.freepik.com/premium-photo/kindergarten-preschool-colorful-banner-with-empty-copy-space-background_800563-2789.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Heading styles */
+.neon-text {
+    font-size: 6em;
+    color: #1c911ca8;
+    margin-top: 50px;
+}
+
+/* Diminished neon effect for specific words */
+.dim-neon {
+    color: #1c9e1ca8;
+    text-shadow: 0 0 1px #1c9e1ca8, 0 0 2px #1c9e1ca8, 0 0 5px #1c9e1ca8;
+}
+
+/* Page container styles */
+.page {
+    display: none;
+    text-align: center;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Game container styles */
+.game-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Game board styles */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+    gap: 5px;
+    margin: 20px auto;
+    background-color: #000;
+    padding: 20px;
+}
+
+/* Cell styles */
+.cell {
+    width: 70px;
+    height: 70px;
+    background-color: #222;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #444;
+}
+
+/* Game info styles */
+.game-info {
+    margin-top: 20px;
+}
+
+/* Select difficulty text styles */
+.select-difficulty {
+    color: orange;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    margin: 10px;
+    cursor: pointer;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: block;
+    width: 250px;
+    animation: slideIn 0.5s forwards;
+}
+
+button:hover {
+    background-color: #ff6b81;
+    transform: scale(1.05);
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Popup modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* White background with opacity */
+    z-index: 9999;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.modal-content #resultMessage {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #2980b9;
+}
+
+/* Celebration and emoji styles */
+.celebration {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.emoji {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+/* Popup styles */
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(254, 254, 254); /* White background for the popup */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 2em; /* Increase text size */
+    z-index: 9999;
+    width: 50%; /* Make the popup wider than the game board */
+    text-align: center;
+}
+#player-turn {
+    margin: 10rem ;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Emojis */
+.win-emoji {
+    font-size: 2em;
+    margin-right: 10px;
+    color: #4CAF50; /* Green color for winning message */
+}
+
+.loss-emoji {
+    font-size: 2em;
+    margin-right: 10px;
+    color: #f44336; /* Red color for losing message */
+}
+
+.draw-emoji {
+    font-size: 2em;
+    margin-right: 10px;
+    color: #2196F3; /* Blue color for draw message */
+}
+

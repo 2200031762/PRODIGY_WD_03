@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Style for the Play button */
+        #playButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 36px;
+            color: #f0dd2b;
+        }
+
+        /* Style for the Settings icon */
+        #settingsIcon {
+            position: fixed;
+            top: 80px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 36px;
+            color: #f0dd2b;
+        }
+
+        /* Style for the settings page */
+        #settingsPage {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            color: green;
+            text-align: center;
+        }
+
+        /* Style for the settings page heading */
+        #settingsHeading {
+            font-size: 36px;
+            margin-top: 50px;
+        }
+
+        /* Style for the settings page buttons */
+        .settingsButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 24px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style for the homepage buttons */
+        .homepage-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio tag for background music -->
+    <audio id="backgroundAudio" loop>
+        <source src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Rafael_Krux_-_The_Epic_2.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Play button as an audio icon -->
+    <button id="playButton" onclick="toggleAudio()">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+    <!-- Settings icon -->
+    <button id="settingsIcon" onclick="showSettings()">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <h1 class="neon-text" style="margin-bottom: 20px;">Tic <span class="dim-neon">Tac</span> <span class="dim-neon">Toe</span></h1>
+    <div id="homePage" class="page active">
+        <button class="slide-in delay-1 homepage-button" id="onePlayerBtn">One Player</button>
+        <button class="slide-in delay-2 homepage-button" id="twoPlayerBtn">Two Players</button>
+    </div>
+
+    <!-- Settings Page -->
+    <div id="settingsPage">
+        <h1 id="settingsHeading">Settings</h1>
+        <button id="fullscreenBtn" class="settingsButton" onclick="toggleFullScreen()">Full Screen</button>
+        <button id="backBtn" class="settingsButton" onclick="hideSettings()">Exit</button>
+    </div>
+
+    <div id="difficultyPage" class="page">
+        <h1 class="select-difficulty">Select Difficulty Level</h1>
+        <button id="easyBtn">Easy</button>
+        <button id="mediumBtn">Medium</button>
+        <button id="hardBtn">Hard</button>
+    </div>
+
+    <!-- Game Page -->
+    <div id="gamePage" class="page">
+        <div class="game-container">
+            <div class="game-board" id="gameBoard">
+                <div class="cell" data-cell="0"></div>
+                <div class="cell" data-cell="1"></div>
+                <div class="cell" data-cell="2"></div>
+                <div class="cell" data-cell="3"></div>
+                <div class="cell" data-cell="4"></div>
+                <div class="cell" data-cell="5"></div>
+                <div class="cell" data-cell="6"></div>
+                <div class="cell" data-cell="7"></div>
+                <div class="cell" data-cell="8"></div>
+            </div>
+            <div class="game-info">
+                <p id="gameStatus"></p>
+                <div class="scores player-info">
+                    <p>Computer: <span id="computerScore">0</span></p>
+                    <p>Player: <span id="playerScore">0</span></p>
+                    <p>Tie: <span id="tieScore">0</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- Replace the Close button with a Restart button -->
+        <button id="restartBtn" class="game-button">Restart</button>
+    </div>
+
+    <!-- Popup modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p id="resultMessage" class="celebration"></p>
+            <button onclick="restartGame()">Restart</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="ai.js"></script>
+
+    <script>
+        function toggleAudio() {
+            var audio = document.getElementById('backgroundAudio');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function showSettings() {
+            var settingsPage = document.getElementById('settingsPage');
+            settingsPage.style.display = 'block';
+        }
+
+        function hideSettings() {
+            var settingsPage = document.getElementById('settingsPage');
+            settingsPage.style.display = 'none';
+        }
+
+        function toggleFullScreen() {
+            var elem = document.documentElement;
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Function to restart the game
+        function restartGame() {
+            modal.style.display = 'none'; // Hide the modal
+            initializeGame(); // Reinitialize the game
+        }
+
+        // Initialize the game when the page loads
+        window.onload = initializeGame;
+
+        // Function to initialize the game
+        function initializeGame() {
+            // Your game initialization code goes here
+        }
+    </script>
+</body>
+</html>
